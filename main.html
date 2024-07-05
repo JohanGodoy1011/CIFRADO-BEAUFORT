@@ -4,31 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Cifrado de Beaufort</title>
+    <title>Cifrado RSA</title>
 </head>
-
 <style>
     .bd-container {min-height: 100vh; background-image: url('./liquid-cheese.svg'); background-size: cover;}
 </style>
-
 <body>
     <div class="d-flex justify-content-center align-items-center bd-container">
         <div class="m-3 p-4 bg-body rounded shadow-lg">
-            <h1 class="border-bottom py-3 mb-3 text-center">Cifrado de Beaufort</h1>
+            <h1 class="border-bottom py-3 mb-3 text-center">Cifrado RSA</h1>
             <div class="mb-3">
-                <label for="InputText" class="form-label fw-bold">Texto</label>
+                <label for="InputP" class="form-label fw-bold">Valor de p (Número primo)</label>
+                <input type="text" class="form-control" id="InputP">
+            </div>
+            <div class="mb-3">
+                <label for="InputQ" class="form-label fw-bold">Valor de q (Número primo)</label>
+                <input type="text" class="form-control" id="InputQ">
+            </div>
+            <div class="mb-3">
+                <label for="InputE" class="form-label fw-bold">Valor de e (Debe ser coprimo con φ(n))</label>
+                <input type="text" class="form-control" id="InputE">
+            </div>
+            <div class="mb-3">
+                <label for="InputText" class="form-label fw-bold">Texto / Ciphertext</label>
                 <input type="text" class="form-control" id="InputText">
             </div>
             <div class="mb-3">
-                <label for="InputKey" class="form-label fw-bold">Clave</label>
-                <input type="text" class="form-control" id="InputKey">
-            </div>
-            <div class="mb-3">
-                <button type="button" class="w-100 btn btn-primary btnCifrado" onclick="cifradoBeaufort()">Ejecutar</button>
+                <button type="button" class="w-100 btn btn-primary" onclick="rsaEncrypt()">Cifrar</button>
+                <button type="button" class="w-100 btn btn-secondary mt-2" onclick="rsaDecrypt()">Descifrar</button>
             </div>
             <div class="mb-3">
                 <label for="InputResult" class="form-label fw-bold">Resultado:</label>
                 <input type="text" class="form-control" id="InputResult" disabled>
+            </div>
+            <div class="mb-3">
+                <p id="publicKey" class="fw-bold"></p>
+                <p id="privateKey" class="fw-bold"></p>
             </div>
         </div>
     </div>
